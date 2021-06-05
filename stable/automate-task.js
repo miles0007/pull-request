@@ -14,8 +14,10 @@ line.question('What are the tasks you have done today ?\n', (answer) => {
 
 
 function formatAnswer(input) {
-    if (typeof input === 'string' && input.endsWith('.')) input.splice(input.length-1,1)
-    console.log(input);
+    if (typeof input === 'string' && input.endsWith('.')) {
+        input = input.substr(0, input.length-1)
+    }
+    
     const inputValues = input.split('.')
     
     // format for virtual office
@@ -34,7 +36,7 @@ function formatAnswer(input) {
 function DateCreator() {
     const months = ['January','February','March','April','May','June','July','August','September','October','November','December']
     const day = new Date();
-    const [month, date, year] = [months[day.getMonth()], day.getDay(), day.getFullYear()]
+    const [month, date, year] = [months[day.getMonth()], day.getDate(), day.getFullYear()]
     return `${month} ${date}, ${year}`
 }
 
